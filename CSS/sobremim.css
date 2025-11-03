@@ -1,0 +1,103 @@
+body {
+    top: 0;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex;
+}
+
+.titulo {
+    text-align: center;
+    margin: 30px 20px;
+}
+
+.sobre-mim-container {
+    width: 30%;
+    background-color: rgb(55, 1, 65);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sobre-mim-content {
+    width: 85%;
+}
+
+.texto-sobre-mim {
+    text-align: left;
+}
+
+.curiosidades-lugares {
+    width: 70%;
+    background-color: black;
+    color: white;
+}
+
+.curiosidades-img,
+.lugares-img {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+}
+
+.curiosidades-img>div {
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    margin-bottom: 30px;
+}
+
+.lugares-img>div {
+    display: flex;
+    justify-content: center;
+    width: 18%;
+    margin-bottom: 30px;
+}
+
+hr {
+    margin: 29px 20px;
+    border-color: rgb(55, 1, 65);
+}
+
+ol {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+    padding: 0;
+}
+
+ol>li {
+    width: 18%;
+    text-align: center;
+    list-style-position: inside;
+    margin-bottom: 30px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 90%;
+    padding: 0;
+}
+
+img {
+    border-radius: 5px;
+    box-shadow: 0 0 30px 15px rgba(55, 1, 65, 0.9);
+    transition: 0.1s ease;
+}
+
+img:hover {
+    transform: scale(1.04);
+    transition: 0.1s ease;
+}
+
+.seta-voltar {
+    box-shadow: none; 
+    transition: none; 
+    margin-bottom: 50px;
+}

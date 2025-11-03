@@ -1,0 +1,89 @@
+body{
+    margin: 0;
+    top: 0;
+    padding: 0;
+    background-color: black;
+}
+
+header{
+    background-color: rgb(55, 1, 65);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#icone-header{
+    display: flex;
+    align-items: center;
+}
+
+#titulo{
+    margin-left: 10px;
+    font-size: 35px;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.sobre{
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    text-decoration: none;
+}
+
+.sobre:hover{
+    color: #f19df8;
+    text-decoration: underline;
+    transition: 0.1s ease;
+}
+
+.imagens{
+    padding: 30px;
+}
+
+img{
+    border-radius: 5px;
+    box-shadow: 0 0 30px 15px rgba(55, 1, 65, 0.9);
+    transition: 0.1s ease;
+}
+
+img:hover{
+    scale: 1.05;
+    transition: 0.1s ease;
+}
+
+td{
+    width: 500px;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+    font-size: 20px;
+}
+
+.botao{
+    background-color: rgb(55, 1, 65);
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.botao:hover{
+    background-color: rgb(36, 2, 42);
+    text-decoration: underline;
+    transition: 0.1s ease;
+}
+
+footer{
+    background-color:  rgb(55, 1, 65);
+    color: black;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+    margin-top: 30px;
+    font-family: 'Bebas Neue', sans-serif;
+}
