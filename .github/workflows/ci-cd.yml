@@ -20,11 +20,6 @@ jobs:
       - name: Baixar código
         uses: actions/checkout@v7
 
-      - name: Configurar Python
-        uses: actions/setup-python@v7
-        with:
-          python-version: "3.13"
-
       - name: Configurar Node.js
         uses: actions/setup-node@v7
         with:
@@ -33,58 +28,10 @@ jobs:
       - name: Validar sintaxe HTML
         run: npx --yes html-validate@11.20.0 --rule parser-error --rule close-order --rule attr-quotes "*.html"
 
-      - name: Verificar referências locais do HTML
-        run: |
-          python - <<'PY'
-          from html.parser import HTMLParser
-          from pathlib import Path
-          from urllib.parse import unquote, urlsplit
-          import sys
-
-          class ReferenceChecker(HTMLParser):
-              def __init__(self, html_path):
-                  super().__init__()
-                  self.html_path = html_path
-                  self.missing_references = []
-
-              def handle_starttag(self, tag, attrs):
-                  for name, value in attrs:
-                      if name not in {"href", "src"} or not value:
-                          continue
-
-                      url = urlsplit(value.strip())
-                      if url.scheme or url.netloc or not url.path:
-                          continue
-
-                      target = Path(unquote(url.path))
-                      if target.is_absolute():
-                          target = Path.cwd() / str(target).lstrip("/")
-                      else:
-                          target = self.html_path.parent / target
-
-                      if not target.exists():
-                          self.missing_references.append(
-                              (self.getpos()[0], value, target)
-                          )
-
-          html_files = sorted(Path.cwd().glob("*.html"))
-          if not html_files:
-              print("Nenhum arquivo HTML encontrado na raiz do projeto.", file=sys.stderr)
-              sys.exit(1)
-
-          errors = []
-          for html_path in html_files:
-              checker = ReferenceChecker(html_path)
-              checker.feed(html_path.read_text(encoding="utf-8"))
-              for line, reference, target in checker.missing_references:
-                  errors.append(f"{html_path}:{line}: {reference} não encontrado ({target})")
-
-          if errors:
-              print("Foram encontradas referências locais ausentes:", file=sys.stderr)
-              print("\n".join(errors), file=sys.stderr)
-              sys.exit(1)
-
-          print(f"Referências locais verificadas em {len(html_files)} páginas HTML.")
+      - name: Verificar referências locais
+        uses: lycheeverse/lychee-action@v2.9.0
+        with:
+          args: --offline --verbose --no-progress './**/*.html' './**/*.css'
 
   deploy:
     name: Publicar no GitHub Pages
